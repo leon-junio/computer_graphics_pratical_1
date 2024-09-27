@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+
+<StackPane id="primaryContainer" fx:id="primaryContainer" xmlns="http://javafx.com/javafx/8"
+   xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="com.leonjr.controllers.PrimaryController">
+   <BorderPane
+      fx:id="rootPane"
+      VBox.vgrow="ALWAYS">
+      <center>
+         <ScrollPane fx:id="scrollPane" id="scrollPane" fitToWidth="true" fitToHeight="true">
+            <content>
+               <BorderPane fx:id="canvasWrapper">
+               </BorderPane>
+            </content>
+         </ScrollPane>
+      </center>
+      <left>
+         <ToolBar fx:id="leftBar" id="leftBar" orientation="vertical">
+            <Label text="Ações rápidas" />
+            <Button fx:id="clearButton" onAction="#clear" text="Limpar o quadro" disable="false">
+               <graphic>
+                  <FontIcon iconLiteral="mdi2c-card-remove-outline" iconSize="24" />
+               </graphic>
+            </Button>
+            <Label text="Ferramentas de desenho" />
+            <Button fx:id="lineButton" text="Reta" disable="false">
+               <graphic>
+                  <FontIcon iconLiteral="mdi2r-ray-start-end" iconSize="24" />
+               </graphic>
+            </Button>
+            <Button fx:id="circleButton" text="Círculo" disable="false">
+               <graphic>
+                  <FontIcon iconLiteral="mdi2s-shape-circle-plus" iconSize="24" />
+               </graphic>
+            </Button>
+            <Separator orientation="HORIZONTAL" />
+            <!-- Radio buttons to selecte between two render modes -->
+            <Label text="Corte" />
+            <ToggleButton fx:id="clipButton" onAction="#startClipArea" text="Recorte no canvas"
+               disable="false">
+               <graphic>
+                  <FontIcon iconLiteral="mdi2s-scissors-cutting" iconSize="24" />
+               </graphic>
+            </ToggleButton>
+         </ToolBar>
+      </left>
+      <bottom>
+         <ToolBar HBox.hgrow="ALWAYS">
+            <Button fx:id="resetCenterPosition" onAction="#resetCanvasZoom" disable="false">
+               <graphic>
+                  <FontIcon iconLiteral="mdi2i-image-filter-center-focus" iconSize="24" />
+               </graphic>
+            </Button>
+            <Separator orientation="VERTICAL" />
+            <Label text="Aperte SHIFT para desenhar uma linha" />
+            <Separator orientation="VERTICAL" />
+            <Label text="Aperte CONTROL para desenhar um círculo" />
+         </ToolBar>
+      </bottom>
+      <top>
+         <HBox VBox.vgrow="NEVER">
+            <ToolBar fx:id="topBar" id="topBar" HBox.hgrow="ALWAYS">
+               <MenuButton text="Arquivo">
+                  <items>
+                     <MenuItem fx:id="saveButton" onAction="#saveCanvas" text="Salvar"
+                        disable="false">
+                        <graphic>
+                           <FontIcon iconLiteral="mdi2c-content-save" iconSize="36" />
+                        </graphic>
+                     </MenuItem>
+                  </items>
+               </MenuButton>
+               <MenuButton text="Configurações">
+                  <items>
+                     <MenuItem text="Preferências do usuário" onAction="#openPreferences">
+                        <graphic>
+                           <FontIcon iconLiteral="mdi2m-monitor-dashboard" iconSize="36" />
+                        </graphic>
+                     </MenuItem>
+                  </items>
+               </MenuButton>
+               <MenuButton text="Mais">
+                  <items>
+                     <MenuItem text="Repositório do código" onAction="#openRepo">
+                        <graphic>
+                           <FontIcon iconLiteral="mdi2g-github" iconSize="36" />
+                        </graphic>
+                     </MenuItem>
+                  </items>
+                  <items>
+                     <MenuItem text="Sobre" onAction="#openAboutDialog">
+                        <graphic>
+                           <FontIcon iconLiteral="mdi2i-information" iconSize="36" />
+                        </graphic>
+                     </MenuItem>
+                  </items>
+               </MenuButton>
+               <Pane HBox.hgrow="ALWAYS" />
+               <Button onAction="#minimizeWindow">
+                  <graphic>
+                     <FontIcon iconLiteral="mdi2m-minus" iconSize="24" />
+                  </graphic>
+               </Button>
+               <Button onAction="#maximizeWindow">
+                  <graphic>
+                     <FontIcon iconLiteral="mdi2f-fullscreen" iconSize="24" />
+                  </graphic>
+               </Button>
+               <Button onAction="#closeWindow">
+                  <graphic>
+                     <FontIcon iconLiteral="mdi2c-close" iconSize="24" />
+                  </graphic>
+               </Button>
+            </ToolBar>
+         </HBox>
+      </top>
+   </BorderPane>
+</StackPane>
